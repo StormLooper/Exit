@@ -1,8 +1,8 @@
 /**
  * ACTION TYPES
  */
-const DISABLE_BUTTONS = "DISABLE_BUTTONS";
-
+const DISABLE_BUTTONS = 'DISABLE_BUTTONS';
+const RESET_BUTTONS = 'RESET_BUTTONS';
 /**
  * INITIAL STATE
  */
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   tableButton: false,
   chestButton: false,
   skeletonButton: false,
-  allCompleted: false
+  allCompleted: false,
 };
 
 /**
@@ -22,7 +22,14 @@ export const disableAllExcept = (buttonToEnable, buttonToDisable) => {
   return {
     type: DISABLE_BUTTONS,
     buttonToEnable,
-    buttonToDisable
+    buttonToDisable,
+  };
+};
+
+export const resetButtons = () => {
+  return {
+    type: RESET_BUTTONS,
+    INITIAL_STATE,
   };
 };
 
@@ -36,6 +43,8 @@ export default function(buttons = INITIAL_STATE, action) {
       newState[action.buttonToEnable] = true;
       newState[action.buttonToDisable] = false;
       return newState;
+    case RESET_BUTTONS:
+      return action.INITIAL_STATE;
     default:
       return buttons;
   }
