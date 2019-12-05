@@ -3,6 +3,7 @@ import { changeLocation } from '../../store/location';
 import { Text, View, VrButton } from 'react-360';
 import styles from '../styles';
 import store from '../../store';
+import { resetTasks } from '../../store/tasksCompleted';
 import { resetButtons } from '../../store/buttons';
 import { NativeModules } from 'react-360';
 const { SurfaceModule } = NativeModules;
@@ -14,7 +15,8 @@ export default class EscapedSurface extends React.Component {
   }
   handlePlayAgain() {
     //reset buttons
-    store.dispatch(resetButtons())
+    store.dispatch(resetButtons());
+    store.dispatch(resetTasks());
     //unmount currect surface
     SurfaceModule.changeSurfaceSize('EscapedSurface', 1, 1);
 
@@ -36,4 +38,3 @@ export default class EscapedSurface extends React.Component {
     );
   }
 }
-
