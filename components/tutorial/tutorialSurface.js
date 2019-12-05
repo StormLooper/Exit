@@ -18,7 +18,7 @@ export default class TutorialSurface extends React.Component {
     return (
       <View style={styles.panel}>
         <View style={styles.greetingBox}>
-          <Text style={styles.greeting}>Welcome to Exit: Escape the room!</Text>
+          <Text style={styles.greeting}>Welcome Exit: Escape the room!</Text>
           <Text style={styles.greeting}>
             Use your mouse or trackpad to look around.
           </Text>
