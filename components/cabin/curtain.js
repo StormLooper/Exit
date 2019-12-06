@@ -1,7 +1,7 @@
 import React from "react";
 import { asset, View, NativeModules } from "react-360";
 import Entity from "Entity";
-const { AudioModule } = NativeModules;
+
 class Curtain extends React.Component {
   render() {
     return (
