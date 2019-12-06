@@ -6,12 +6,12 @@ import { disableAllClues } from '../../store/clues';
 import { connect } from 'react-redux';
 const { AudioModule, SurfaceModule } = NativeModules;
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
-// 3d_book/texture/watercolor-paper-texture.jpg_specular.png
+
 let openedBookTexture =
-  'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/Textures/ChurchBookOpenV2-Gloss.png';
+  'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/Textures/ChurchBookOpenV2-DiffuseHints.png';
 
 let closedBooktexture =
-'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/Textures/watercolor-paper-texture.jpg_specular.png';
+  'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/Textures/ChurchBookClosedV2-Diffuse.png';
 
 class Book extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Book extends React.Component {
       textureObj:
         'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj',
       textureObjmtl:
-      closedBooktexture,
+        'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl',
       info: '',
       fade: new Animated.Value(0),
       mirrorClueSrc: 'clues/faceClue.jpg',
@@ -35,7 +35,7 @@ class Book extends React.Component {
         textureObj:
           'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.obj',
         textureObjmtl:
-        openedBookTexture,
+          'ChurchBookSet/ChurchBookOpenV2/ChurchBookOpenV2-OBJ/ChurchBookOpenV2.mtl',
         close: false,
         info: 'The riddle for next clue',
       });
@@ -44,7 +44,7 @@ class Book extends React.Component {
         textureObj:
           'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.obj',
         textureObjmtl:
-        closedBooktexture,
+          'ChurchBookSet/ChurchBookClosedV2/ChurchBookClosedV2-OBJ/ChurchBookClosedV2.mtl',
         close: true,
         info: '',
         fade: new Animated.Value(0),
@@ -73,7 +73,6 @@ class Book extends React.Component {
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),
-              mtl:asset(this.state.textureObj),
             }}
             lit={true}
             style={{
@@ -86,7 +85,7 @@ class Book extends React.Component {
               ],
             }}
             texture={asset(
-              this.state.textureObjmtl
+              '3d_book/texture/watercolor-paper-texture.jpg_specular.png'
             )}
           />
         </VrButton>

@@ -11,7 +11,7 @@ newmtl wire_166229229
 	Kd 0.6510 0.8980 0.8980
 	Ks 0.3500 0.3500 0.3500
 
-map_Ka texture/watercolor-paper-texture.jpg_specular.png
+map_Ka texture/front_side_crystal
 
 newmtl wire_135006006
 	Ns 32
