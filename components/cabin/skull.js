@@ -1,5 +1,5 @@
 import React from 'react';
-import {  asset,View,NativeModules} from 'react-360';
+import {  asset,View} from 'react-360';
 import Entity from 'Entity';
 
 class Skull extends React.Component {
