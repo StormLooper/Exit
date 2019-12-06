@@ -5,6 +5,7 @@ import styles from "../styles";
 import store from "../../store";
 import { resetTasks } from "../../store/tasksCompleted";
 import { resetButtons } from "../../store/buttons";
+import { resetAllClues } from "../../store/clues";
 import { NativeModules } from "react-360";
 const { SurfaceModule } = NativeModules;
 
@@ -17,6 +18,8 @@ export default class EscapedSurface extends React.Component {
     //reset buttons
     store.dispatch(resetButtons());
     store.dispatch(resetTasks());
+    store.dispatch(resetAllClues());
+
     //unmount currect surface
     SurfaceModule.changeSurfaceSize("EscapedSurface", 1, 1);
 

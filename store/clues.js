@@ -2,6 +2,7 @@
  * ACTION TYPES
  */
 const DISABLE_CLUES = "DISABLE_CLUES";
+const RESET_CLUES = "RESET_CLUES";
 
 /**
  * INITIAL STATE
@@ -26,6 +27,12 @@ export const disableAllClues = (cluesToEnable, cluesToDisable) => {
   };
 };
 
+export const resetAllClues = () => {
+  return {
+    type: RESET_CLUES,
+    STATE
+  }
+}
 /**
  * REDUCER
  */
@@ -36,6 +43,8 @@ export default function(clues = STATE, action) {
       newState[action.cluesToEnable] = true;
       newState[action.cluesToDisable] = false;
       return newState;
+    case RESET_CLUES:
+      return STATE;
     default:
       return clues;
   }
