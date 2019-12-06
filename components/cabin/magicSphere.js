@@ -1,14 +1,12 @@
-import React from 'react';
-import { Easing } from 'react-native';
-import { asset, Animated, View, VrButton } from 'react-360';
-import Entity from 'Entity';
-import { connect } from 'react-redux';
-import { addAdditionalTask } from '../../store/tasksCompleted';
-let torchOffObj = 'light/Option_with_glass/2(torch-lamp).obj';
-let torchOffMtl = 'light/lamp_texture/Color.png';
+import React from "react";
+import { asset, Animated, View, VrButton } from "react-360";
+import Entity from "Entity";
+import { connect } from "react-redux";
+import { addAdditionalTask } from "../../store/tasksCompleted";
+let torchOffObj = "light/Option_with_glass/2(torch-lamp).obj";
+let torchOffMtl = "light/lamp_texture/Color.png";
 let torchOnObj = torchOffObj;
-let torchOnMtl = 'light/lamp_texture/Color2.png';
-let animatedValue = new Animated.Value(0);
+let torchOnMtl = "light/lamp_texture/Color2.png";
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
@@ -21,7 +19,7 @@ class MagicSphere extends React.Component {
     torchmtl: [torchOffMtl, torchOffMtl, torchOffMtl, torchOffMtl, torchOffMtl],
     rotation: new Animated.Value(0),
     rotationSphere: new Animated.Value(0),
-    isRotating: true,
+    isRotating: true
   };
 
   componentDidMount() {
@@ -32,14 +30,14 @@ class MagicSphere extends React.Component {
     this.state.rotation.setValue(0);
     Animated.timing(this.state.rotation, {
       toValue: 360,
-      duration: 6000,
+      duration: 6000
     }).start(this.startRotate);
   };
   startRotateCrystal = () => {
     this.state.rotationSphere.setValue(0);
     Animated.timing(this.state.rotationSphere, {
       toValue: 360,
-      duration: 6000,
+      duration: 6000
     }).start(this.startRotateCrystal);
   };
 
@@ -47,7 +45,7 @@ class MagicSphere extends React.Component {
     if (!this.state.timeOver) {
       this.setState({
         timeOver: true,
-        renderTimerHint: true,
+        renderTimerHint: true
       });
 
       let time = 12001;
@@ -68,33 +66,29 @@ class MagicSphere extends React.Component {
         time = time - 3000;
 
         if (time === 9001) {
-          console.log(time, 'zmiana 1');
           this.setState({
             torchObj: state1obj,
-            torchmtl: state1mtl,
+            torchmtl: state1mtl
           });
         } else {
           setTimeout(() => {
-            console.log(time, 'time2');
             this.setState({
               torchObj: state2obj,
-              torchmtl: state2mtl,
+              torchmtl: state2mtl
             });
           }, 3000);
 
           setTimeout(() => {
-            console.log(time, 'time3');
             this.setState({
               torchObj: state3obj,
-              torchmtl: state3mtl,
+              torchmtl: state3mtl
             });
           }, 6000);
 
           setTimeout(() => {
-            console.log(time, 'time4');
             this.setState({
               torchObj: state4obj,
-              torchmtl: state4mtl,
+              torchmtl: state4mtl
             });
           }, 9000);
         }
@@ -111,8 +105,8 @@ class MagicSphere extends React.Component {
       <View>
         <AnimatedEntity
           source={{
-            obj: asset('crystal/magic-sphere.obj'),
-            mtl: asset('crystal/magic-sphere.mtl'),
+            obj: asset("crystal/magic-sphere.obj"),
+            mtl: asset("crystal/magic-sphere.mtl")
           }}
           lit={true}
           style={{
@@ -121,8 +115,8 @@ class MagicSphere extends React.Component {
               { scaleX: 0.0003 },
               { scaleY: 0.0003 },
               { scaleZ: 0.0003 },
-              { rotateY: sphereRotation },
-            ],
+              { rotateY: sphereRotation }
+            ]
           }}
         />
 
@@ -130,8 +124,8 @@ class MagicSphere extends React.Component {
           <AnimatedEntity
             onExit={this.stopRotate}
             source={{
-              obj: asset('spider/Only_Spider_with_Animations_Export.obj'),
-              mtl: asset('spider/Only_Spider_with_Animations_Export.mtl'),
+              obj: asset("spider/Only_Spider_with_Animations_Export.obj"),
+              mtl: asset("spider/Only_Spider_with_Animations_Export.mtl")
             }}
             lit={true}
             style={{
@@ -140,104 +134,104 @@ class MagicSphere extends React.Component {
                 { scaleX: 1 },
                 { scaleY: 1 },
                 { scaleZ: 1 },
-                { rotateY: rotationValue },
-              ],
+                { rotateY: rotationValue }
+              ]
             }}
           />
         </VrButton>
         <VrButton>
           <AnimatedEntity
             source={{
-              obj: asset(this.state.torchObj[3]),
+              obj: asset(this.state.torchObj[3])
             }}
             lit={true}
             texture={asset(this.state.torchmtl[3])}
             style={{
               transform: [
                 {
-                  translate: [-400, -400, 800],
+                  translate: [-400, -400, 800]
                 },
                 {
-                  scaleX: 9.0,
+                  scaleX: 9.0
                 },
                 {
-                  scaleY: 9.0,
+                  scaleY: 9.0
                 },
                 {
-                  scaleZ: 9.0,
-                },
-              ],
+                  scaleZ: 9.0
+                }
+              ]
             }}
           />
 
           <AnimatedEntity
             source={{
-              obj: asset(this.state.torchObj[1]),
+              obj: asset(this.state.torchObj[1])
             }}
             lit={true}
             texture={asset(this.state.torchmtl[1])}
             style={{
               transform: [
                 {
-                  translate: [400, -400, -800],
+                  translate: [400, -400, -800]
                 },
                 {
-                  scaleX: 9.0,
+                  scaleX: 9.0
                 },
                 {
-                  scaleY: 9.0,
+                  scaleY: 9.0
                 },
                 {
-                  scaleZ: 9.0,
-                },
-              ],
+                  scaleZ: 9.0
+                }
+              ]
             }}
           />
 
           <AnimatedEntity
             source={{
-              obj: asset(this.state.torchObj[0]),
+              obj: asset(this.state.torchObj[0])
             }}
             lit={true}
             texture={asset(this.state.torchmtl[0])}
             style={{
               transform: [
                 {
-                  translate: [-830, -550, -370],
+                  translate: [-830, -550, -370]
                 },
                 {
-                  scaleX: 8.0,
+                  scaleX: 8.0
                 },
                 {
-                  scaleY: 8.0,
+                  scaleY: 8.0
                 },
                 {
-                  scaleZ: 8.0,
-                },
-              ],
+                  scaleZ: 8.0
+                }
+              ]
             }}
           />
           <AnimatedEntity
             source={{
-              obj: asset(this.state.torchObj[2]),
+              obj: asset(this.state.torchObj[2])
             }}
             lit={true}
             texture={asset(this.state.torchmtl[2])}
             style={{
               transform: [
                 {
-                  translate: [860, -510, 280],
+                  translate: [860, -510, 280]
                 },
                 {
-                  scaleX: 8.0,
+                  scaleX: 8.0
                 },
                 {
-                  scaleY: 8.0,
+                  scaleY: 8.0
                 },
                 {
-                  scaleZ: 8.0,
-                },
-              ],
+                  scaleZ: 8.0
+                }
+              ]
             }}
           />
         </VrButton>
@@ -245,14 +239,14 @@ class MagicSphere extends React.Component {
         {this.state.renderTimerHint ? (
           <Animated.Image
             style={{
-              position: 'absolute',
+              position: "absolute",
               layoutOrigin: [0.5, 0.5, 0],
               width: 1,
               height: 1,
               transform: [{ translateZ: -3 }, { translateX: 0 }],
-              opacity: 1,
+              opacity: 1
             }}
-            source={asset('2d_hints/timer_on.jpg')}
+            source={asset("2d_hints/timer_on.jpg")}
           />
         ) : null}
       </View>
@@ -262,8 +256,11 @@ class MagicSphere extends React.Component {
 
 mapDispatchToProps = dispatch => {
   return {
-    addAdditionalTask: val => dispatch(addAdditionalTask(val)),
+    addAdditionalTask: val => dispatch(addAdditionalTask(val))
   };
 };
 
-export default connect(null, mapDispatchToProps)(MagicSphere);
+export default connect(
+  null,
+  mapDispatchToProps
+)(MagicSphere);
