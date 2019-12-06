@@ -1,5 +1,5 @@
 import React from 'react';
-import {  asset,View,NativeModules} from 'react-360';
+import {  asset,View} from 'react-360';
 import Entity from 'Entity';
 
 class Skull extends React.Component {
@@ -10,7 +10,7 @@ class Skull extends React.Component {
 
             <View>
                 <Entity source={{
-                obj: asset('skull.obj'),
+                obj: asset('Skull.obj'),
                 }} style={{
                 transform: [
                     { translate: [350, -650, 600] },

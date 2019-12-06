@@ -1,6 +1,6 @@
 import React from "react";
 import { Easing } from "react-native";
-import { asset, Animated, View, VrButton, PointLight } from "react-360";
+import { asset, Animated, View, VrButton } from "react-360";
 import { connect } from "react-redux";
 import { updateCompleted } from "../../store/buttons";
 import Entity from "Entity";
@@ -13,7 +13,7 @@ class FallingCurtain extends React.Component {
     yPosition: new Animated.Value(1),
     textureObj: "curtain-obj/curtain.obj",
     textureMtl: "curtain-obj/curtain.mtl",
-    showEcape: false
+    showEscape: false
   };
   startFalling = () => {
     const ifGameFinished = this.props.allTasksCompleted.allCompleted;
@@ -25,27 +25,16 @@ class FallingCurtain extends React.Component {
         delay: 100,
         easing: Easing.quad
       }).start(() => {
-        // this.setState({
-        //   showEcape: true,
-
-        // });
-        this.props.handleClickEscapeKey()
-      })
-    }
-  };
-
-  showEscape = () => {
-    if (this.state.showEcape) {
-      console.log("Escape Background ------> put the logic here");
+        this.props.handleClickEscapeKey();
+      });
     }
   };
 
   render() {
     const yPosition = this.state.yPosition;
-    // console.log(yPosition._value, 'yPosition')
     return (
       <View>
-        <VrButton onClick={(() => this.showEscape, () => this.startFalling())}>
+        <VrButton onClick={() => this.startFalling()}>
           <AnimatedEntity
             source={{
               obj: asset(this.state.textureObj),

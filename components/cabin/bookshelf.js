@@ -10,15 +10,12 @@ import {
 import Entity from "Entity";
 const { AudioModule } = NativeModules;
 class Bookshelf extends React.Component {
-
-
-state = {
-      xPosition: new Animated.Value(0),
-      yPosition: new Animated.Value(0),
-      yRotation: new Animated.Value(0),
-      zPosition: new Animated.Value(-5)
-    };
-
+  state = {
+    xPosition: new Animated.Value(0),
+    yPosition: new Animated.Value(0),
+    yRotation: new Animated.Value(0),
+    zPosition: new Animated.Value(-5)
+  };
 
   handleClick = () => {
     AudioModule.playOneShot({

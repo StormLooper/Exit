@@ -1,7 +1,7 @@
-import React from 'react';
-import { Text, View, VrButton, Image, asset } from 'react-360';
-import styles from '../styles';
-import { NativeModules } from 'react-360';
+import React from "react";
+import { Text, View, VrButton, Image, asset } from "react-360";
+import styles from "../styles";
+import { NativeModules } from "react-360";
 const { SurfaceModule } = NativeModules;
 
 export default class TutorialSurface extends React.Component {
@@ -11,8 +11,7 @@ export default class TutorialSurface extends React.Component {
   }
   handleClick() {
     //unmount tutorial surrface
-    console.log('unmounting surface');
-    SurfaceModule.changeSurfaceSize('TutorialSurface', 1, 1);
+    SurfaceModule.changeSurfaceSize("TutorialSurface", 1, 1);
   }
   render() {
     return (
@@ -22,7 +21,7 @@ export default class TutorialSurface extends React.Component {
           <Text style={styles.greeting}>
             Use your mouse or trackpad to look around.
           </Text>
-          <Image source={asset('arrow.png')} style={styles.tutorialPic1} />
+          <Image source={asset("arrow.png")} style={styles.tutorialPic1} />
         </View>
         <VrButton style={styles.rootButton} onClick={this.handleClick}>
           <Text style={styles.text}>Got it!</Text>

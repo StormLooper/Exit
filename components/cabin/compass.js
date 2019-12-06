@@ -3,7 +3,7 @@ import { asset, Animated, View, VrButton, NativeModules } from "react-360";
 import Entity from "Entity";
 import { connect } from "react-redux";
 import { disableAllClues } from "../../store/clues";
-const { AudioModule, SurfaceModule } = NativeModules;
+const { SurfaceModule } = NativeModules;
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Compass extends React.Component {
@@ -17,11 +17,10 @@ class Compass extends React.Component {
     ],
     textureAsset: [
       "3d_direction/irregular_stone_wall.png",
-      '3d_book/texture/watercolor-paper-texture.jpg_specular.png'
+      "3d_book/texture/watercolor-paper-texture.jpg_specular.png"
     ],
     currentlyDisplayedHint: "clues/chestClue.jpg"
   };
-  componentDidMount() {}
   handleClicked = () => {
     this.props.disableClues("chestClue", "compassClue");
   };
@@ -58,22 +57,27 @@ class Compass extends React.Component {
             />
           </VrButton>
           {chestClue ? (
-          <VrButton onClick={() => {SurfaceModule.zoomCamera([0,0,650])}}>
-            <Animated.Image
-              style={{
-                position: "absolute",
-                layoutOrigin: [0.5, 0.5, 0],
-                width: 450,
-                height: 300,
-                transform: [
-                  {translateZ: 800},
-                  {translateX: 300},
-                  {rotateY: 0} ],
-                opacity: 1
+            <VrButton
+              onClick={() => {
+                SurfaceModule.zoomCamera([0, 0, 650]);
               }}
-              source={asset(this.state.currentlyDisplayedHint)}
-            />
-          </VrButton>
+            >
+              <Animated.Image
+                style={{
+                  position: "absolute",
+                  layoutOrigin: [0.5, 0.5, 0],
+                  width: 450,
+                  height: 300,
+                  transform: [
+                    { translateZ: 800 },
+                    { translateX: 300 },
+                    { rotateY: 0 }
+                  ],
+                  opacity: 1
+                }}
+                source={asset(this.state.currentlyDisplayedHint)}
+              />
+            </VrButton>
           ) : null}
         </View>
       );

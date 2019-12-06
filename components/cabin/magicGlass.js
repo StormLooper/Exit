@@ -1,96 +1,66 @@
 /* eslint-disable no-loop-func */
-import React from 'react';
-import { asset, Animated, View, VrButton } from 'react-360';
-import Entity from 'Entity';
-import { connect } from 'react-redux';
-import { getAdditionalTask } from '../../store/tasksCompleted';
+import React from "react";
+import { asset, Animated, View, VrButton } from "react-360";
+import Entity from "Entity";
+import { connect } from "react-redux";
 
 let AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class MagicGlass extends React.Component {
   state = {
     //showKey state is on when timer state is on
-    hint: '2d_hints/turn_right.jpg',
+    hint: "2d_hints/turn_right.jpg",
     showHint: false,
     showKey: false,
-    objAsset: ['3d_globe/magic_sphere.obj', '3d_round_chest/chest04.obj'],
+    objAsset: ["3d_globe/magic_sphere.obj", "3d_round_chest/chest04.obj"],
     textureAsset: [
-      '3d_globe/TexturesCom_MetalBare0150_1_seamless_S.jpg',
-      '3d_round_chest/marble.jpg',
-      '3d_round_chest/copper.jpg',
-      '3d_round_chest/felt.jpg',
-    ],
+      "3d_globe/TexturesCom_MetalBare0150_1_seamless_S.jpg",
+      "3d_round_chest/marble.jpg",
+      "3d_round_chest/copper.jpg",
+      "3d_round_chest/felt.jpg"
+    ]
   };
-
-  componentDidMount() {
-    console.log(this.props.additionalTask, 'additionalTask');
-  }
 
   showKey() {
     if (this.props.additionalTask) {
       this.setState({
-        showKey: true,
+        showKey: true
       });
     }
   }
 
   showHint() {
     this.setState({
-      showHint: true,
+      showHint: true
     });
   }
 
   render() {
     return (
       <View>
-        <VrButton>
-          {/* <AnimatedEntity
-            source={{
-              obj: asset(this.state.objAsset[0])
-            }}
-            lit={true}
-            texture={asset(this.state.textureAsset[0])}
-            style={{
-              transform: [
-                {
-                  translate: [-240, -125, -60]
-                },
-                {
-                  scaleX: 1.0
-                },
-                {
-                  scaleY: 1.0
-                },
-                {
-                  scaleZ: 1.0
-                }
-              ]
-            }}
-          /> */}
-        </VrButton>
         <VrButton onClick={() => this.showKey()}>
           <AnimatedEntity
             source={{
-              obj: asset(this.state.objAsset[1]),
+              obj: asset(this.state.objAsset[1])
             }}
             lit={true}
             texture={asset(this.state.textureAsset[1])}
             style={{
               transform: [
                 {
-                  translate: [700, -630, 70],
+                  translate: [700, -630, 70]
                 },
-                {rotateY: -10},
+                { rotateY: -10 },
                 {
-                  scaleX: 30.0,
-                },
-                {
-                  scaleY: 30.0,
+                  scaleX: 30.0
                 },
                 {
-                  scaleZ: 30.0,
+                  scaleY: 30.0
                 },
-              ],
+                {
+                  scaleZ: 30.0
+                }
+              ]
             }}
           />
         </VrButton>
@@ -98,26 +68,26 @@ class MagicGlass extends React.Component {
           <VrButton onClick={() => this.showHint()}>
             <AnimatedEntity
               source={{
-                obj: asset('3d_music_note/sixteenth_note.obj'),
+                obj: asset("3d_music_note/sixteenth_note.obj")
               }}
               lit={true}
               // texture = {asset(this.state.keyText[1])}
               style={{
                 transform: [
                   {
-                    translate: [200, -60, 60],
+                    translate: [200, -60, 60]
                   },
                   {
-                    scaleX: 25.0,
+                    scaleX: 25.0
                   },
                   {
-                    scaleY: 25.0,
+                    scaleY: 25.0
                   },
                   {
-                    scaleZ: 25.0,
-                  },
+                    scaleZ: 25.0
+                  }
                 ],
-                color: 'black',
+                color: "black"
               }}
             />
           </VrButton>
@@ -126,14 +96,14 @@ class MagicGlass extends React.Component {
         {this.state.showHint ? (
           <Animated.Image
             style={{
-              position: 'absolute',
+              position: "absolute",
               layoutOrigin: [0.5, 0.5, 0],
               width: 1,
               height: 1,
               transform: [{ translateZ: -3 }, { translateX: -1 }],
-              opacity: 1,
+              opacity: 1
             }}
-            source={asset('2d_hints/sound_pattern_task.jpg')}
+            source={asset("2d_hints/sound_pattern_task.jpg")}
           />
         ) : null}
       </View>
@@ -143,8 +113,11 @@ class MagicGlass extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    additionalTask: state.tasksCompleted.additionalTask,
+    additionalTask: state.tasksCompleted.additionalTask
   };
 };
 
-export default connect(mapStateToProps, null)(MagicGlass);
+export default connect(
+  mapStateToProps,
+  null
+)(MagicGlass);

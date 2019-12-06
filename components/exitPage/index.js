@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Environment, asset, NativeModules, VrButton } from 'react-360';
-import EscapedSurface from './escapedSurface';
+import {  NativeModules} from 'react-360';
 const { SurfaceModule } = NativeModules;
 
 export default class ExitPage extends React.Component {
