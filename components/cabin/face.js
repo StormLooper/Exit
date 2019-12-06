@@ -1,9 +1,9 @@
-import React from 'react';
-import { asset, Animated, View, VrButton, NativeModules } from 'react-360';
-import Entity from 'Entity';
-import { disableAllExcept } from '../../store/buttons';
-import { disableAllClues } from '../../store/clues';
-import { connect } from 'react-redux';
+import React from "react";
+import { asset, Animated, View, VrButton, NativeModules } from "react-360";
+import Entity from "Entity";
+import { disableAllExcept } from "../../store/buttons";
+import { disableAllClues } from "../../store/clues";
+import { connect } from "react-redux";
 const { AudioModule, SurfaceModule } = NativeModules;
 
 class Face extends React.Component {
@@ -12,7 +12,7 @@ class Face extends React.Component {
     isFading: true,
     textFade: new Animated.Value(0),
     tableClue: false,
-    tableSrc: 'clues/tableClue.jpg',
+    tableSrc: "clues/tableClue.jpg"
   };
 
   componentDidMount() {
@@ -23,21 +23,21 @@ class Face extends React.Component {
         const newFade = prev.fade + (newIsFading ? -0.04 : 0.04);
         return {
           fade: newFade,
-          isFading: newIsFading,
+          isFading: newIsFading
         };
       });
     }, 200);
   }
 
   handleClick = () => {
-    this.props.disableButtons('tableButton', 'faceButton');
-    this.props.disableClues('tableClue', 'faceClue');
+    this.props.disableButtons("tableButton", "faceButton");
+    this.props.disableClues("tableClue", "faceClue");
     AudioModule.playOneShot({
-      source: asset('Laugh.wav'),
+      source: asset("Laugh.wav")
     });
 
     this.setState({
-      tableClue: true,
+      tableClue: true
     });
   };
   render() {
@@ -49,7 +49,7 @@ class Face extends React.Component {
         <VrButton onClick={this.handleClick} disabled={disableStatus}>
           <Entity
             source={{
-              obj: asset('face/151out.obj'),
+              obj: asset("face/151out.obj")
             }}
             style={{
               transform: [
@@ -58,10 +58,10 @@ class Face extends React.Component {
                 { rotateZ: 50 },
                 { scaleX: 30.0 },
                 { scaleY: 30.0 },
-                { scaleZ: 30.0 },
+                { scaleZ: 30.0 }
               ],
-              color: 'white',
-              opacity: opacityValue,
+              color: "white",
+              opacity: opacityValue
             }}
             lit={true}
           ></Entity>
@@ -74,16 +74,16 @@ class Face extends React.Component {
           >
             <Animated.Image
               style={{
-                position: 'absolute',
+                position: "absolute",
                 layoutOrigin: [0.5, 0.5, 0],
                 width: 400,
                 height: 400,
                 transform: [
                   { translateZ: 800 },
                   { translateX: 300 },
-                  { rotateY: -180 },
+                  { rotateY: -180 }
                 ],
-                opacity: 1,
+                opacity: 1
               }}
               source={asset(this.state.tableSrc)}
             />
@@ -96,7 +96,7 @@ class Face extends React.Component {
 const mapStateToProps = state => {
   return {
     buttons: state.buttons,
-    clues: state.clues,
+    clues: state.clues
   };
 };
 
@@ -105,8 +105,11 @@ const mapDispatchToProps = dispatch => {
     disableButtons: (buttonToEnable, buttonToDisable) =>
       dispatch(disableAllExcept(buttonToEnable, buttonToDisable)),
     disableClues: (cluesToEnable, cluesToDisable) =>
-      dispatch(disableAllClues(cluesToEnable, cluesToDisable)),
+      dispatch(disableAllClues(cluesToEnable, cluesToDisable))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Face);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Face);
