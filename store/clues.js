@@ -32,7 +32,7 @@ export const disableAllClues = (cluesToEnable, cluesToDisable) => {
 export default function(clues = STATE, action) {
   switch (action.type) {
     case DISABLE_CLUES:
-      const newState = { ...clues};
+      const newState = { ...clues };
       newState[action.cluesToEnable] = true;
       newState[action.cluesToDisable] = false;
       return newState;
