@@ -1,8 +1,5 @@
-import React from 'react';
-import { asset,Animated, VrButton } from 'react-360';
-import styles from '../styles';
-import Entity from 'Entity';
-
+import React from "react";
+import { asset, Animated, VrButton } from "react-360";
 
 export default class Click extends React.Component {
   constructor(props) {
@@ -11,20 +8,18 @@ export default class Click extends React.Component {
   render() {
     return (
       <VrButton>
-         <Animated.Image
-              style={{
-               position: 'absolute',
-                layoutOrigin: [0.5, 0.5, 0],
-                width: 30,
-                height: 20,
-                transform: [
-                  { translate: [-80, 10, 800] },
-                ],
-                opacity: 1,
-              }}
-              source={asset("click.jpg")}
-            />
-       </VrButton>
+        <Animated.Image
+          style={{
+            position: "absolute",
+            layoutOrigin: [0.5, 0.5, 0],
+            width: 30,
+            height: 20,
+            transform: [{ translate: [-80, 10, 800] }],
+            opacity: 1
+          }}
+          source={asset("click.jpg")}
+        />
+      </VrButton>
     );
   }
 }
