@@ -10,7 +10,7 @@ class Skull extends React.Component {
 
             <View>
                 <Entity source={{
-                obj: asset('skull.obj'),
+                obj: asset('Skull.obj'),
                 }} style={{
                 transform: [
                     { translate: [350, -650, 600] },
