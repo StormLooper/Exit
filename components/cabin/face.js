@@ -12,7 +12,7 @@ class Face extends React.Component {
     isFading: true,
     textFade: new Animated.Value(0),
     tableClue: false,
-    tableSrc: 'Clues/tableClue.jpg',
+    tableSrc: 'clues/tableClue.jpg',
   };
 
   componentDidMount() {
