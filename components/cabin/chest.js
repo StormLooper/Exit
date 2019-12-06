@@ -25,7 +25,6 @@ class Chest extends React.Component {
     zPosition: new Animated.Value(1)
   };
   moveToSkeleton = () => {
-    console.log("trying to move to skeleton");
     Animated.timing(this.state.zPosition, {
       toValue: -800,
       duration: 3000,
