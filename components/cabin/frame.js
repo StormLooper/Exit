@@ -1,6 +1,5 @@
 import React from "react";
-import { Easing } from "react-native";
-import { asset, Animated, View, VrButton, PointLight } from "react-360";
+import { asset, View } from "react-360";
 import Entity from "Entity";
 
 class Frame extends React.Component {
@@ -8,7 +7,6 @@ class Frame extends React.Component {
     textureObj: "frame/frame.obj",
     textureMtl: "frame/frame.mtl"
   };
-  componentDidMount() {}
 
   render() {
     return (
